@@ -1,0 +1,367 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #f9f9f9;
+}
+
+/*Header*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    border-bottom: 2px solid rgba(156, 156, 156, 0.3);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    font-size: 20px;
+    font-weight: 600;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.nav-link:hover {
+    color: black;
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+}
+
+/* Стили для контейнера корзины */
+.cartcontainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Убирает подчеркивание под иконкой и цифрой */
+}
+
+.cart-icon {
+    font-size: 32px;
+    color: black;
+    display: block;
+}
+
+/* Поправили селектор счетчика с .navbar на .cartcontainer */
+.cartcontainer .counter {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Грид Каталог */
+.mainbody {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.topicname {
+    font-size: 32px;
+    margin: 20px 0;
+    font-weight: 900;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    /* Сетка сама решает, сколько карточек поместится в ряд (минимум 250px каждая) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.productcard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #CFEBFF;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.productcard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Контейнер для фото карточки */
+.photo-container {
+    width: 100%;
+    height: 250px; 
+    overflow: hidden;
+    border-radius: 12px 12px 0 0; /* Округляем только верхние углы у рамки */
+}
+
+/* Объединили стили картинок карточки, убрали конфликты */
+.productphoto, .photo-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* Заставляет картинку заполнять контейнер 250px по высоте без искажений */
+}
+
+.productcard .productname {
+    font-size: 22px;
+    font-weight: 700;
+    padding: 15px 15px 5px 15px;
+}
+
+.pricerate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px 15px 15px;
+    margin-top: auto;
+}
+
+.pricerate .price {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.pricerate .rating {
+    background-color: black;
+    border-radius: 6px;
+    color: white;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.details-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #f0f0f0;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.details-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Детальная страница товара */
+.product-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.photozone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.photozone .miniphotos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.photozone .miniphotos img {
+    width: 155px;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.photozone .bigphoto {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.photozone .bigphoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    gap: 10px;
+}
+
+.information button {
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.information button:hover {
+    transform: scale(1.04);
+}
+
+
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.producttable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.prodnamephoto {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.productinformation {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.productinformation h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+
+.productinformation button {
+    background: none;
+    cursor: pointer;
+    border: none;
+    color: red;
+    font-size: 20px;
+}
+
+
+.cart-total {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 12px;
+    margin-top: 30px;
+
+    max-width: 350px;
+    width: 100%;
+    margin-left: auto;
+}
+
+.cart-total .totalinfo {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.cart-total .totalprice {
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    width: 100%;
+}
+
+.cart-total .proceedbtn {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    height: 45px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.cart-total .proceedbtn:hover {
+    background-color: #494949;
+    transform: scale(1.03);
+}
+
+
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-controls button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 25px;
+    height: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.quantity-controls button:hover {
+    background-color: #ddd;
+}
+
+.qty-num {
+    font-size: 16px;
+    min-width: 15px;
+    text-align: center;
+}

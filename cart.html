@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardShop - Cart</title>
+    <link rel="stylesheet" href="cartstyle.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">MediaCards</a>
+
+        <nav class="nav-menu">
+            <a href="cart.html" class="nav-link">Cart</a>
+        </nav>
+
+        <!-- Кликабельная корзина со счетчиком -->
+        <a href="cart.html" class="cartcontainer">
+            <div class="cart-icon">🛒</div>
+            <span class="counter">0</span>
+        </a>
+    </header>
+
+    <main class="mainbody">
+        <h1 class="pagename">Your Shopping Cart</h1>
+
+        <div class="cart-container">
+            <table class="producttable">
+                <thead>
+                    <tr class="title">
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="productinformation">
+                        <td class="prodnamephoto">
+                            <img src="veldora.jpg" alt="Veldora Card" class="cart-item-img">
+                            <span class="cart-item-title">Veldora Card</span>
+                        </td>
+                        <td class="price-col">$29.99</td>
+                        <td class="quantity-col">1</td>
+                        <td class="subtotal-col">$29.99</td>
+                        <td class="remove-col">
+                            <button class="delete-btn">✕</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cart-total">
+                <h2 class="totalinfo">Cart Total</h2>
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span>$29.99</span>
+                </div>
+                <div class="total-row">
+                    <span>Shipping:</span>
+                    <span class="free-badge">Free</span>
+                </div>
+                <hr class="total-divider">
+                <div class="total-row final-total">
+                    <span>Total:</span>
+                    <span class="price-tag">$29.99</span>
+                </div>
+                <button class="proceedbtn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
