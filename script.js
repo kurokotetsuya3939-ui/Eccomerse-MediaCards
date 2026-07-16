@@ -1,56 +1,43 @@
-// Инициализируем корзину: берем данные из памяти браузера или создаем пустой массив
 let cart = JSON.parse(localStorage.getItem('SHOPPING_CART')) || [];
 
-// Запускаем скрипт сразу после загрузки HTML
 document.addEventListener('DOMContentLoaded', () => {
-    updateCartCounter(); // Обновляем цифру на значке корзины в шапке
+    updateCartCounter();
 
-    // Определяем, на какой странице мы находимся, по элементам в HTML
     if (document.querySelector('.grid-container')) {
         initCatalogPage();
-    } 
+    }
     if (document.querySelector('.producttable')) {
         initCartPage();
     }
+
+    initAuthModal();
 });
 
-// =========================================================================
-// ОБЩИЕ ФУНКЦИИ (Работают на всех страницах)
-// =========================================================================
+//Cart and counter logic
 
-// Функция обновления счетчика товаров в шапке
 function updateCartCounter() {
     const counterElements = document.querySelectorAll('.counter');
-    // Считаем общее количество всех товаров в корзине
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    
+
     counterElements.forEach(counter => {
         counter.textContent = totalItems;
     });
 }
 
-// Функция сохранения корзины в память браузера
 function saveCartToStorage() {
     localStorage.setItem('SHOPPING_CART', JSON.stringify(cart));
     updateCartCounter();
 }
 
-// =========================================================================
-// ЛОГИКА ДЛЯ СТРАНИЦЫ КАТАЛОГА (catalog.html)
-// =========================================================================
-
 function initCatalogPage() {
-    // Находим все кнопки "Buy Card" в каталоге
     const buyButtons = document.querySelectorAll('.buy-btn');
 
     buyButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            // Находим саму карточку, на которую нажали
             const card = event.target.closest('.productcard');
-            
-            // Собираем данные о персонаже прямо из HTML-разметки карточки
+
             const product = {
-                id: card.querySelector('.productname').textContent.trim(), // Используем имя как уникальный ID
+                id: card.querySelector('.productname').textContent.trim(),
                 name: card.querySelector('.productname').textContent.trim(),
                 price: parseFloat(card.querySelector('.price').textContent.replace('$', '')),
                 image: card.querySelector('.productphoto').getAttribute('src'),
@@ -58,8 +45,7 @@ function initCatalogPage() {
             };
 
             addToCart(product);
-            
-            // Легкая анимация кнопки для обратной связи
+
             const originalText = button.textContent;
             button.textContent = 'Added! ✓';
             button.style.backgroundColor = '#27ae60';
@@ -71,28 +57,21 @@ function initCatalogPage() {
     });
 }
 
-// Функция добавления товара в массив корзины
 function addToCart(product) {
-    // Проверяем, есть ли уже такой персонаж в корзине
     const existingItem = cart.find(item => item.id === product.id);
 
     if (existingItem) {
-        existingItem.quantity += 1; // Если есть, просто увеличиваем количество
+        existingItem.quantity += 1;
     } else {
-        cart.push(product); // Если нет, добавляем как новый товар
+        cart.push(product);
     }
 
     saveCartToStorage();
 }
 
-// =========================================================================
-// ЛОГИКА ДЛЯ СТРАНИЦЫ КОРЗИНЫ (cart.html)
-// =========================================================================
-
 function initCartPage() {
     renderCartTable();
 
-    // Слушаем клики внутри таблицы (для удаления товаров)
     const tableBody = document.querySelector('.producttable tbody');
     if (tableBody) {
         tableBody.addEventListener('click', (event) => {
@@ -104,14 +83,12 @@ function initCartPage() {
     }
 }
 
-// Функция отрисовки таблицы товаров и блока Итого
 function renderCartTable() {
     const tableBody = document.querySelector('.producttable tbody');
     const cartContainer = document.querySelector('.cart-container');
-    
+
     if (!tableBody) return;
 
-    // Если корзина абсолютно пустая
     if (cart.length === 0) {
         cartContainer.innerHTML = `
             <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.04);">
@@ -122,12 +99,10 @@ function renderCartTable() {
         return;
     }
 
-    // Очищаем таблицу перед новой отрисовкой
     tableBody.innerHTML = '';
 
     let subtotal = 0;
 
-    // Генерируем строки таблицы для каждого товара
     cart.forEach(item => {
         const itemSubtotal = item.price * item.quantity;
         subtotal += itemSubtotal;
@@ -149,30 +124,78 @@ function renderCartTable() {
         tableBody.appendChild(row);
     });
 
-    // Обновляем блок расчета стоимости (Итого) справа
     updateCartTotals(subtotal);
 }
 
-// Функция пересчета финальной стоимости
 function updateCartTotals(subtotal) {
     const totalRows = document.querySelectorAll('.cart-total .total-row span:last-child');
     const finalPriceTag = document.querySelector('.cart-total .final-total .price-tag');
 
     if (totalRows.length >= 2) {
-        totalRows[0].textContent = `$${subtotal.toFixed(2)}`; // Subtotal
-        // Наша доставка бесплатная, так что второй ряд (Shipping) остается Free
+        totalRows[0].textContent = `$${subtotal.toFixed(2)}`;
     }
-    
+
     if (finalPriceTag) {
-        finalPriceTag.textContent = `$${subtotal.toFixed(2)}`; // Total
+        finalPriceTag.textContent = `$${subtotal.toFixed(2)}`;
     }
 }
 
-// Функция удаления товара из корзины
 function removeFromCart(productId) {
-    // Фильтруем массив, исключая удаленный товар
     cart = cart.filter(item => item.id !== productId);
-    
-    saveCartToStorage(); // Сохраняем изменения в локальной памяти
-    renderCartTable();  // Перерисовываем таблицу на экране
+
+    saveCartToStorage();
+    renderCartTable();
 }
+
+//Register \ Login
+
+function initAuthModal() {
+    const authOverlay = document.getElementById('authOverlay');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
+    const loginForm = document.querySelector('.form-box.login');
+    const registerForm = document.querySelector('.form-box.register');
+
+    if (!authOverlay) return;
+
+    if (registerLink && loginForm && registerForm) {
+        registerLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.classList.remove('active');
+            registerForm.classList.add('active');
+        });
+    }
+
+    if (loginLink && loginForm && registerForm) {
+        loginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerForm.classList.remove('active');
+            loginForm.classList.add('active');
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            authOverlay.classList.remove('open');
+        });
+    }
+
+    authOverlay.addEventListener('click', (e) => {
+        if (e.target === authOverlay) {
+            authOverlay.classList.remove('open');
+        }
+    });
+}
+
+window.openAuthModal = function () {
+    const authOverlay = document.getElementById('authOverlay');
+    const loginForm = document.querySelector('.form-box.login');
+    const registerForm = document.querySelector('.form-box.register');
+
+    if (authOverlay && loginForm && registerForm) {
+        authOverlay.classList.add('open');
+        registerForm.classList.remove('active');
+        loginForm.classList.add('active');
+    }
+};

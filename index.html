@@ -5,42 +5,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CardShop - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="indexstyle.css">
 </head>
 
 <body>
     <header>
         <a href="index.html" class="logo">MediaCards</a>
-        <nav class="nav-menu">
-            <a href="cart.html" class="nav-link">Cart</a>
-        </nav>
-        <a href="cart.html" class="cartcontainer">
-            <div class="cart-icon">🛒</div>
-            <span class="counter">0</span>
-        </a>
-    </header>
-
-    <main class="mainbody">
-        <h1 class="welcome-title">Select Universe</h1>
-
-        <div class="menu-grid">
-            <!-- Ведет на catalog.html и прыгает к #slime -->
-            <a href="catalog.html#slime" class="menu-card">
-                <img src="slimeuni.jpg" alt="Slime Universe">
-                <h2>That Time I Got Reincarnated as a Slime</h2>
-            </a>
-
-            <a href="catalog.html#naruto" class="menu-card">
-                <img src="narutouni.jpg" alt="Naruto Universe">
-                <h2>Naruto</h2>
-            </a>
-
-            <a href="catalog.html#onepiece" class="menu-card">
-                <img src="onepieceuni.jpg" alt="One Piece Universe">
-                <h2>One Piece</h2>
+        <div class="nav-cont">
+            <nav class="nav-menu">
+                <button onclick="openAuthModal()" class="btnLogin-popup">Sign In</button>
+            </nav>
+            <a href="cart.html" class="cartcontainer">
+                <div class="cart-icon">🛒</div>
+                <span class="counter">0</span>
             </a>
         </div>
-    </main>
+    </header>
+    <div class="wrapper">
+        <span class="icon-close">
+            <ion-icon name="close"></ion-icon>
+        </span>
+
+
+        <main class="mainbody">
+            <h1 class="welcome-title">Select Universe</h1>
+
+            <div class="menu-grid">
+                <a href="catalog.html#slime" class="menu-card">
+                    <img src="slimeuni.jpg" alt="Slime Universe">
+                    <h2>That Time I Got Reincarnated as a Slime</h2>
+                </a>
+
+                <a href="catalog.html#naruto" class="menu-card">
+                    <img src="narutouni.jpg" alt="Naruto Universe">
+                    <h2>Naruto</h2>
+                </a>
+
+                <a href="catalog.html#onepiece" class="menu-card">
+                    <img src="onepieceuni.jpg" alt="One Piece Universe">
+                    <h2>One Piece</h2>
+                </a>
+
+                <a href="catalog.html#demonslayer" class="menu-card">
+                    <img src="slayeruni.jpg" alt="Demon Slayer Universe">
+                    <h2>Demon Slayer</h2>
+                </a>
+
+                <a href="catalog.html#dragonball" class="menu-card">
+                    <img src="dragonballuni.jpg" alt="Dragon Ball Universe">
+                    <h2>Dragon Ball</h2>
+                </a>
+
+                <a href="catalog.html#bleach" class="menu-card">
+                    <img src="bleachuni.jpg" alt="Bleach Universe">
+                    <h2>Bleach</h2>
+                </a>
+
+                <a href="catalog.html#bluelock" class="menu-card">
+                    <img src="blueuni.jpg" alt="Blue Lock Universe">
+                    <h2>Blue Lock</h2>
+                </a>
+
+                <a href="catalog.html#volleyball" class="menu-card">
+                    <img src="voleyball.jpg" alt="Volleyball Universe">
+                    <h2>Voleyball</h2>
+                </a>
+
+                <a href="catalog.html#basketball" class="menu-card">
+                    <img src="basketball.jpg" alt="Basketball Universe">
+                    <h2>Basketball Kuroko</h2>
+                </a>
+            </div>
+        </main>
+
+        <div class="auth-overlay" id="authOverlay">
+            <div class="auth-modal-card">
+                <button class="close-modal-btn" id="closeModalBtn">✕</button>
+
+                <div class="form-box login active">
+                    <h2>Login</h2>
+                    <form action="#">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                            <input type="email" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                            <input type="password" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox"> Remember me</label>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="subbtn">Login</button>
+                        <div class="login-register">
+                            <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="form-box register">
+                    <h2>Registration</h2>
+                    <form action="#">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person"></ion-icon></span>
+                            <input type="text" required>
+                            <label>Username</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                            <input type="email" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                            <input type="password" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox"> I agree to the terms & conditions</label>
+                        </div>
+                        <button type="submit" class="subbtn">Register</button>
+                        <div class="login-register">
+                            <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

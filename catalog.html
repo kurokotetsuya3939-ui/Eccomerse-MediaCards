@@ -5,29 +5,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CardShop - Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="catalogstyle.css">
 </head>
 
 <body>
     <header>
         <a href="index.html" class="logo">MediaCards</a>
-        <nav class="nav-menu">
-            <a href="cart.html" class="nav-link">Cart</a>
-        </nav>
-        <a href="cart.html" class="cartcontainer">
-            <div class="cart-icon">🛒</div>
-            <span class="counter">0</span>
-        </a>
+        <div class="nav-cont">
+            <nav class="nav-menu">
+                <button onclick="openAuthModal()" class="btnLogin-popup">Sign In</button>
+            </nav>
+            <a href="cart.html" class="cartcontainer">
+                <div class="cart-icon">🛒</div>
+                <span class="counter">0</span>
+            </a>
+        </div>
     </header>
 
+
+
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal-card">
+            <button class="close-modal-btn" id="closeModalBtn">✕</button>
+
+            <div class="form-box login active">
+                <h2>Login</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="subbtn">Login</button>
+                    <div class="login-register">
+                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <h2>Registration</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> I agree to the terms & conditions</label>
+                    </div>
+                    <button type="submit" class="subbtn">Register</button>
+                    <div class="login-register">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <main class="mainbody">
-        
-        <!-- ================= СЕКЦИЯ: СЛИЗЬ ================= -->
+        <!-- SLIME SECTION -->
+
+
+
         <section id="slime" class="anime-section">
             <h2 class="anime-title">Rimuru Slime Collection</h2>
-            
+
             <div class="grid-container">
-                <!-- Римуру -->
+
+
+
                 <div class="productcard">
                     <div class="photo-container">
                         <img src="rimuru.jpg" class="productphoto" alt="Rimuru Tempest">
@@ -42,7 +113,6 @@
                     </div>
                 </div>
 
-                <!-- Бенимару -->
                 <div class="productcard">
                     <div class="photo-container">
                         <img src="benimaru.jpg" class="productphoto" alt="Benimaru">
@@ -57,7 +127,9 @@
                     </div>
                 </div>
 
-                <!-- Диабло -->
+
+
+
                 <div class="productcard">
                     <div class="photo-container">
                         <img src="diablo.jpg" class="productphoto" alt="Diablo">
@@ -71,15 +143,95 @@
                         <button class="buy-btn">Buy Card</button>
                     </div>
                 </div>
+
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="testarossa.jpg" class="productphoto" alt="Testarossa">
+                    </div>
+                    <h3 class="productname">Testarossa</h3>
+                    <div class="pricerate">
+                        <span class="price">$30.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="veldora.jpg" class="productphoto" alt="veldora">
+                    </div>
+                    <h3 class="productname">Veldora</h3>
+                    <div class="pricerate">
+                        <span class="price">$29.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="luminous.jpg" class="productphoto" alt="Luminous">
+                    </div>
+                    <h3 class="productname">Luminous</h3>
+                    <div class="pricerate">
+                        <span class="price">$35.50</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="freya.jpg" class="productphoto" alt="Freya">
+                    </div>
+                    <h3 class="productname">Freya</h3>
+                    <div class="pricerate">
+                        <span class="price">$35.50</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="shion.jpg" class="productphoto" alt="Shion">
+                    </div>
+                    <h3 class="productname">Shion</h3>
+                    <div class="pricerate">
+                        <span class="price">$35.50</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
             </div>
         </section>
 
-        <!-- ================= СЕКЦИЯ: НАРУТО ================= -->
+        <!-- NARUTO SECTION -->
+
+
+
         <section id="naruto" class="anime-section">
             <h2 class="anime-title">Naruto Collection</h2>
-            
+
             <div class="grid-container">
-                <!-- Наруто -->
                 <div class="productcard">
                     <div class="photo-container">
                         <img src="naruto.jpg" class="productphoto" alt="Naruto Uzumaki">
@@ -94,7 +246,6 @@
                     </div>
                 </div>
 
-                <!-- Саске -->
                 <div class="productcard">
                     <div class="photo-container">
                         <img src="sasuke.jpg" class="productphoto" alt="Sasuke Uchiha">
@@ -108,20 +259,13 @@
                         <button class="buy-btn">Buy Card</button>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- ================= СЕКЦИЯ: ONE PIECE ================= -->
-        <section id="onepiece" class="anime-section">
-            <h2 class="anime-title">One Piece Collection</h2>
-            
-            <div class="grid-container">
-                <!-- Луффи -->
+
                 <div class="productcard">
                     <div class="photo-container">
-                        <img src="luffy.jpg" class="productphoto" alt="Monkey D. Luffy">
+                        <img src="kakashi.jpg" class="productphoto" alt="Kakashi Hatake">
                     </div>
-                    <h3 class="productname">Monkey D. Luffy</h3>
+                    <h3 class="productname">Kakashi Hatake</h3>
                     <div class="pricerate">
                         <span class="price">$29.99</span>
                         <span class="rating">9.9/10</span>
@@ -130,12 +274,239 @@
                         <button class="buy-btn">Buy Card</button>
                     </div>
                 </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="madara.jpg" class="productphoto" alt="Madara">
+                    </div>
+                    <h3 class="productname">Madara Uchiha</h3>
+                    <div class="pricerate">
+                        <span class="price">$39.99</span>
+                        <span class="rating">9.9/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="hashirama.jpg" class="productphoto" alt="Hashirama">
+                    </div>
+                    <h3 class="productname">Hashirama Senju</h3>
+                    <div class="pricerate">
+                        <span class="price">$40.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="minato.jpg" class="productphoto" alt="Minato">
+                    </div>
+                    <h3 class="productname">Minato Namikaze</h3>
+                    <div class="pricerate">
+                        <span class="price">$38.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+
             </div>
         </section>
 
-    </main>
 
+
+        <!-- ONE PIECE SECTION -->
+
+
+
+        <section id="onepiece" class="anime-section">
+            <h2 class="anime-title">One Piece Collection</h2>
+
+            <div class="grid-container">
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="luffy.jpg" class="productphoto" alt="Monkey D. Luffy">
+                    </div>
+                    <h3 class="productname">Monkey D. Luffy</h3>
+                    <div class="pricerate">
+                        <span class="price">$49.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="zoro.jpg" class="productphoto" alt="Zoro">
+                    </div>
+                    <h3 class="productname">Roronoa Zoro</h3>
+                    <div class="pricerate">
+                        <span class="price">$35.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="sanji.jpg" class="productphoto" alt="sanji">
+                    </div>
+                    <h3 class="productname">Vinsmoke Sanji</h3>
+                    <div class="pricerate">
+                        <span class="price">$33.99</span>
+                        <span class="rating">9.8/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="nami.jpg" class="productphoto" alt="Nami">
+                    </div>
+                    <h3 class="productname">Nami</h3>
+                    <div class="pricerate">
+                        <span class="price">$29.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="robin.jpg" class="productphoto" alt="Robin">
+                    </div>
+                    <h3 class="productname">Nico Robin</h3>
+                    <div class="pricerate">
+                        <span class="price">$30.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="boa.jpg" class="productphoto" alt="Boa Hancock">
+                    </div>
+                    <h3 class="productname">Boa Hancock</h3>
+                    <div class="pricerate">
+                        <span class="price">$50.99</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+
+
+
+        <!-- DEMON SLAYER SECTION -->
+
+
+
+        <section id="demonslayer" class="anime-section">
+            <h2 class="anime-title">Demon Slayer Collection</h2>
+
+            <div class="grid-container">
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="tanjiro.jpg" class="productphoto" alt="Tanjiro">
+                    </div>
+                    <h3 class="productname">Tanjiro Kamado</h3>
+                    <div class="pricerate">
+                        <span class="price">$39.85</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="zenitsu.jpg" class="productphoto" alt="Zenitsu">
+                    </div>
+                    <h3 class="productname">Zenitsu Agatsuma</h3>
+                    <div class="pricerate">
+                        <span class="price">$39.85</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="yoriichi.jpg" class="productphoto" alt="yoriichi tsugikuni">
+                    </div>
+                    <h3 class="productname">yoriichi tsugikuni</h3>
+                    <div class="pricerate">
+                        <span class="price">$55.85</span>
+                        <span class="rating">10/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+
+                <div class="productcard">
+                    <div class="photo-container">
+                        <img src="kokushibo.jpg" class="productphoto" alt="Kokushib">
+                    </div>
+                    <h3 class="productname">Kokushibo</h3>
+                    <div class="pricerate">
+                        <span class="price">$39.85</span>
+                        <span class="rating">9.9/10</span>
+                    </div>
+                    <div class="card-actions">
+                        <button class="buy-btn">Buy Card</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+    </main>
     <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

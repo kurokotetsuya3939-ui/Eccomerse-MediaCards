@@ -5,22 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CardShop - Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="cartstyle.css">
 </head>
 
 <body>
     <header>
         <a href="index.html" class="logo">MediaCards</a>
-
-        <nav class="nav-menu">
-            <a href="cart.html" class="nav-link">Cart</a>
-        </nav>
-
-        <!-- Кликабельная корзина со счетчиком -->
-        <a href="cart.html" class="cartcontainer">
-            <div class="cart-icon">🛒</div>
-            <span class="counter">0</span>
-        </a>
+        <div class="nav-cont">
+            <nav class="nav-menu">
+                <button onclick="openAuthModal()" class="btnLogin-popup">Sign In</button>
+            </nav>
+            <a href="cart.html" class="cartcontainer">
+                <div class="cart-icon">🛒</div>
+                <span class="counter">0</span>
+            </a>
+        </div>
     </header>
 
     <main class="mainbody">
@@ -73,9 +76,69 @@
         </div>
     </main>
 
+
+
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal-card">
+            <button class="close-modal-btn" id="closeModalBtn">✕</button>
+
+            <div class="form-box login active">
+                <h2>Login</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="subbtn">Login</button>
+                    <div class="login-register">
+                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <h2>Registration</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="person"></ion-icon></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> I agree to the terms & conditions</label>
+                    </div>
+                    <button type="submit" class="subbtn">Register</button>
+                    <div class="login-register">
+                        <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
-    <script src="script.js"></script>
 </body>
 
 </html>
